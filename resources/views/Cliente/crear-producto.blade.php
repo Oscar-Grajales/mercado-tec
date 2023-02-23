@@ -1,0 +1,115 @@
+@include('header')
+
+		<!-- NAVIGATION -->
+		<nav id="navigation">
+			<!-- container -->
+			<div class="container">
+				<!-- responsive-nav -->
+				<div id="responsive-nav">
+					<!-- NAV -->
+					<ul class="main-nav nav navbar-nav">
+						<li><a href="/inicio-cliente">Inicio</a></li>
+						<li><a href="/obtener-categorias">Categorías</a></li>
+						<li class="active"><a href="/mis-productos">Mis productos</a></li>
+						<li><a href="/mis-compras">Mis compras</a></li>
+					</ul>
+					<!-- /NAV -->
+				</div>
+				<!-- /responsive-nav -->
+			</div>
+			<!-- /container -->
+		</nav>
+		<!-- /NAVIGATION -->
+
+		<!-- BREADCRUMB -->
+		<div id="breadcrumb" class="section">
+			<!-- container -->
+			<div class="container">
+				<!-- row -->
+				<div class="row">
+					<div class="col-md-12">
+						<h3 class="breadcrumb-header">Crear producto</h3>
+					</div>
+				</div>
+				<!-- /row -->
+			</div>
+			<!-- /container -->
+		</div>
+		<!-- /BREADCRUMB -->
+
+		<!-- SECTION -->
+		<div class="section">
+			<!-- container -->
+			<div class="container">
+                <div id="content" class="bg-grey w-100">
+                    <section class="bg-light py-3">
+                        <section class="bg-light py-3">                            
+                            <div class="container-fluid">        
+                                <form action="crear-producto" method="POST" enctype="multipart/form-data">
+                                    @csrf
+                                    <legend><i class="fa fa-list"></i> &nbsp; Información del producto</legend>
+                                    <div class="container-fluid">
+                                        <div class="row">
+                                            <div class="col-12 col-md-4">
+                                                <div class="form-group bmd-form-group">
+                                                    <label for="nombre" class="bmd-label-floating">Nombre &nbsp; <i class="fa fa-archive"></i> &nbsp;</label>
+                                                    <input type="text" class="form-control" name="nombre">
+                                                </div>
+                                            </div>
+                                            <div class="col-12 col-md-4">
+                                                <div class="form-group bmd-form-group">
+                                                    <label for="piezas" class="bmd-label-floating">Piezas &nbsp; <i class="fa fa-cubes"></i> &nbsp;</label>
+                                                    <input type="text" class="form-control" name="piezas">
+                                                </div>
+                                            </div>
+                                            <div class="col-12 col-md-4">
+                                                <div class="form-group bmd-form-group">
+                                                    <label for="descripcion" class="bmd-label-floating">Descripción &nbsp; <i class="fa fa-list-alt"></i> &nbsp;</label>
+                                                    <input type="text" class="form-control" name="descripcion">
+                                                </div>
+                                            </div>
+                                            <div class="col-12 col-md-4">
+                                                <div class="form-group bmd-form-group">
+                                                    <label for="precio" class="bmd-label-floating">Precio &nbsp; <i class="fa fa-usd"></i> &nbsp;</label>
+                                                    <input type="text" class="form-control" name="precio">
+                                                </div>
+                                            </div>
+                                            <div class="col-12 col-md-4">
+                                                <div class="form-group bmd-form-group is-filled">
+                                                    <label for="categoria" class="bmd-label-floating">Categoria &nbsp; <i class="fa fa-th-large"></i> &nbsp;</label>  
+                                                    <select class="form-control" name="categoria" id="usuario_cargo">
+                                                        @foreach($categorias as $categoria)
+                                                            <option value="{{$categoria->id}}">{{$categoria->nombre}}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                            </div> 
+                                            <div class="col-12 col-md-4">
+                                                <div class="form-group">
+                                                    <br>
+                                                    <input type="file" class="form-control-file" name="producto_foto" id="producto_foto" accept=".jpg, .png, .jpeg">
+                                                    <p><br>Tipos de archivos permitidos: JPG, JPEG, PNG. Tamaño máximo 3MB.</p>
+                                                </div>
+                                            </div>                           
+                                        </div>
+                                    </div>                
+                                    <p class="text-center" style="margin-top: 40px;">
+                                        <button type="reset" class="btn btn-raised btn-secondary btn-sm"><i class="fa fa-eraser"></i> &nbsp; LIMPIAR</button>
+                                        &nbsp; &nbsp;
+                                        <button type="submit" class="btn btn-raised btn-info btn-sm"><i class="fa fa-save"></i> &nbsp; GUARDAR</button>
+                                    </p>
+                                </form>
+                            </div>
+                            <br>
+                            <br>
+                        </section>
+                        <br>
+                        <br>
+                    </section>
+                </div>
+			</div>
+			<!-- /container -->
+		</div>
+		<!-- /SECTION -->
+		
+@include('footer')
